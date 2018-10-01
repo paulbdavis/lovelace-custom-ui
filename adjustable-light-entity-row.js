@@ -1,74 +1,78 @@
 class AdjustableLightEntityRow extends Polymer.Element {
   static get template() {
     return Polymer.html`
-    <style>
-      hui-generic-entity-row {
-        margin: var(--ha-themed-slider-margin, initial);
-      }
-      .flex {
-        display: flex;
-        align-items: center;
-      }
-      .second-line paper-slider {
-        width: 100%;
-      }
-.flex-box {
-display: flex;
-justify-content: space-evenly;
-}
-paper-button {
-    color: var(--primary-color);
-    font-weight: 500;
-    margin-right: -.57em;
-}
-    </style>
-    <hui-generic-entity-row
-      config="[[_config]]"
-      hass="[[_hass]]"
-      >
-      <div class="flex">
-          <ha-entity-toggle
-            state-obj="[[stateObj]]"
-            hass="[[_hass]]"
-          ></ha-entity-toggle>
-      </div>
-    </hui-generic-entity-row>
-<template is="dom-if" if="{{isOn}}">
-      <div class="second-line flex">
-      <span>Brightness</span><paper-slider
-        min="[[brightnessMin]]"
-        max="[[brightnessMax]]"
-        value="{{brightness}}"
-        step="[[step]]"
-        pin
-        on-change="selectedValue"
-        ignore-bar-touch
-        on-click="stopPropagation">
-      </paper-slider>
-      </div>
+<style>
+ hui-generic-entity-row {
+     margin: var(--ha-themed-slider-margin, initial);
+ }
+ .flex {
+     display: flex;
+     align-items: center;
+ }
+ .second-line paper-slider {
+     width: 100%;
+ }
+ .flex-box {
+     display: flex;
+     justify-content: space-evenly;
+ }
+ paper-button {
+     color: var(--primary-color);
+     font-weight: 500;
+     margin-right: -.57em;
+ }
+</style>
+<hui-generic-entity-row
+  config="[[_config]]"
+  hass="[[_hass]]" >
+    <div class="flex">
+        <ha-entity-toggle
+          state-obj="[[stateObj]]"
+          hass="[[_hass]]"></ha-entity-toggle>
+    </div>
+</hui-generic-entity-row>
 
-      <div class="second-line flex">
-      <span>Temperature</span> <paper-slider
-        min="[[tempMin]]"
-        max="[[tempMax]]"
-        value="{{color_temp}}"
-        step="[[step]]"
-        pin
-        on-change="selectedValueWhite"
-        ignore-bar-touch
-        on-click="stopPropagation">
-      </paper-slider>
-      </div>
-<div class="flex-box">
-<template is="dom-repeat" items="[[tempButtons]]">
-<paper-button on-click="handleButton">{{item.action_name}}</paper-button>
-</template>
-</div>
-<div class="flex-box">
-<template is="dom-repeat" items="[[_config.buttons]]">
-<paper-button on-click="handleButton">{{item.action_name}}</paper-button>
-</template>
-</div>
+<template is="dom-if" if="{{isOn}}">
+    <div class="second-line flex">
+        <span>Brightness</span>
+        <paper-slider
+          min="[[brightnessMin]]"
+          max="[[brightnessMax]]"
+          value="{{brightness}}"
+          step="[[step]]"
+          pin
+          on-change="selectedValue"
+          ignore-bar-touch
+          on-click="stopPropagation">
+        </paper-slider>
+    </div>
+
+    <div class="second-line flex">
+        <span>Temperature</span>
+        <paper-slider
+          min="[[tempMin]]"
+          max="[[tempMax]]"
+          value="{{color_temp}}"
+          step="[[step]]"
+          pin
+          on-change="selectedValueWhite"
+          ignore-bar-touch
+          on-click="stopPropagation">
+        </paper-slider>
+    </div>
+    
+    <div class="flex-box">
+        <template is="dom-repeat" items="[[tempButtons]]">
+            <paper-button on-click="handleButton">{{item.action_name}}</paper-button>
+        </template>
+    </div>
+    
+    <div class="flex-box">
+        <template is="dom-repeat" items="[[_config.buttons]]">
+            <paper-button on-click="handleButton">{{item.action_name}}</paper-button>
+        </template>
+    </div>
+    
 </template>
     `
   }
