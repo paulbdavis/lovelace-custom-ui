@@ -1,0 +1,61 @@
+* Lovelace Custom UI Elements
+
+** Button Entity Row
+
+   #+CAPTION: Button Entity Row
+   #+NAME: button-entity-row
+   [[file:img/button-entity-row.jpg]]
+
+   For use in an ~entites~ card. Available colors are ~red~, ~green~,
+   ~yellow~, and ~grey~. The default uses your default color for
+   buttons and icons (probably blue).
+
+   #+BEGIN_SRC yaml
+     - type: entities
+       title: Living Room Lights
+       show_header_toggle: false
+       entities:
+         - type: "custom:button-entity-row"
+           buttons:
+             - icon: mdi:lightbulb-on
+               icon_color: yellow
+               action_name: "On"
+               service: scene.turn_on
+               service_data:
+                 entity_id: scene.lights_up
+             - icon: mdi:lightbulb
+               icon_color: grey
+               action_name: "Off"
+               service: scene.turn_on
+               service_data:
+                 entity_id: scene.lights_out
+             - icon: mdi:movie
+               icon_color: red
+               action_name: Movie
+               service: scene.turn_on
+               service_data:
+                 entity_id: scene.movie_lights
+   #+END_SRC
+
+** Adjustable Light Entity Row
+
+   #+CAPTION: Adjustable Light Entity Row
+   #+NAME: adjustable-light-entity-row
+   [[file:img/adjustable-light-entity-row.jpg]]
+
+   For use in an ~entites~ card. You can specify an array of extra
+   buttons to add with an ~action_name~ and ~service_data~ to send to
+   ~light.turn_on~ for the supplied entity. If not supplied, only the
+   temperature buttons show up (as in the screenshot above).
+
+   #+BEGIN_SRC yaml
+     - type: "custom:adjustable-light-entity-row"
+       icon: mdi:lamp
+       name: Desk
+       entity: light.desk
+       buttons:
+         action_name: Red
+         service_data:
+           color_name: red
+   #+END_SRC
+
