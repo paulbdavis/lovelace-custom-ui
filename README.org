@@ -12,8 +12,7 @@
 
    #+BEGIN_SRC yaml
      - type: entities
-       title: Living Room Lights
-       show_header_toggle: false
+       title: Scenes
        entities:
          - type: "custom:button-entity-row"
            buttons:
@@ -49,13 +48,16 @@
    temperature buttons show up (as in the screenshot above).
 
    #+BEGIN_SRC yaml
-     - type: "custom:adjustable-light-entity-row"
-       icon: mdi:lamp
-       name: Desk
-       entity: light.desk
-       buttons:
-         action_name: Red
-         service_data:
-           color_name: red
+     - type: entities
+       title: Lights
+       entities:
+       - type: "custom:adjustable-light-entity-row"
+         icon: mdi:lamp
+         name: Lamp
+         entity: light.lamp
+         buttons:
+           action_name: Red
+           service_data:
+             color_name: red
    #+END_SRC
 
