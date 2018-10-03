@@ -1,8 +1,8 @@
 * Lovelace Custom UI Elements
 
-**These have been moved**
+*These have been moved*
 
-[Check out the custom-cards group](https://github.com/custom-cards)
+[[https://github.com/custom-cards][Check out the custom-cards group]]
 
 ** Button Entity Row
 
